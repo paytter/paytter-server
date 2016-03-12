@@ -12,6 +12,11 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'figaro'
+gem 'slim-rails'
+gem 'activerecord-import'
+gem 'unicorn'
+
 group :development, :test do
   gem 'byebug'
   gem 'better_errors'
@@ -20,6 +25,11 @@ group :development, :test do
   gem 'pry-doc'
   gem 'pry-rails', group: %i(production staging sandbox)  # サーバ上でも使う
   gem 'pry-rescue'
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-figaro'
 end
 
 group :development do
