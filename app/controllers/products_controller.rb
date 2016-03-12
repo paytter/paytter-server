@@ -15,8 +15,9 @@ class ProductsController < ApplicationController
 
   def search_product
     case @meta_product_id
-    when 'item_id' then
-      Product.find_by(itemId: params[@meta_product_id])
+    when 'item_ids' then
+      item_ids = params[@meta_product_id].split(',')
+      item_ids.map { |item_id| Product.find_by(itemId: item_id) }.compact.first
     when 'isbn_id' then
       if params[@meta_product_id].size == 13
         book = Book.find_by(isbn13: parms[@meta_product_id])
@@ -35,7 +36,7 @@ class ProductsController < ApplicationController
   end
 
   def check_params
-    @meta_product_id = (%w(item_id isbn_id ean_id) & params.keys).first
+    @meta_product_id = (%w(item_ids isbn_id ean_id) & params.keys).first
     render json: { error: { message: 'invalid params' } }, status: :bad_request unless valid_params?
   end
 
