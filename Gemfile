@@ -16,6 +16,7 @@ gem 'figaro'
 gem 'slim-rails'
 gem 'activerecord-import'
 gem 'unicorn'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug'

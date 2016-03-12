@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312122220) do
+ActiveRecord::Schema.define(version: 20160312132812) do
+
+  create_table "bank_accounts", force: :cascade do |t|
+    t.integer  "user_id",                limit: 4
+    t.string   "account_id",             limit: 255
+    t.string   "branch_number",          limit: 255
+    t.string   "account_type_cd",        limit: 255
+    t.string   "account_type",           limit: 255
+    t.string   "account_number",         limit: 255
+    t.string   "account_holder_type_cd", limit: 255
+    t.string   "account_holder_type",    limit: 255
+    t.integer  "balance",                limit: 4
+    t.date     "opening_date"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "bank_accounts", ["user_id"], name: "index_bank_accounts_on_user_id", unique: true, using: :btree
 
   create_table "books", force: :cascade do |t|
     t.integer  "product_id",     limit: 4
@@ -58,6 +75,16 @@ ActiveRecord::Schema.define(version: 20160312122220) do
   add_index "foods", ["ean8"], name: "index_foods_on_ean8", unique: true, using: :btree
   add_index "foods", ["product_id"], name: "index_foods_on_product_id", unique: true, using: :btree
 
+  create_table "product_stores", force: :cascade do |t|
+    t.integer  "product_id", limit: 4
+    t.integer  "store_id",   limit: 4
+    t.integer  "price",      limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "product_stores", ["store_id", "product_id"], name: "index_product_stores_on_store_id_and_product_id", unique: true, using: :btree
+
   create_table "products", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
     t.integer  "price",      limit: 4
@@ -67,5 +94,70 @@ ActiveRecord::Schema.define(version: 20160312122220) do
   end
 
   add_index "products", ["item_id"], name: "index_products_on_item_id", unique: true, using: :btree
+
+  create_table "purchase_informations", force: :cascade do |t|
+    t.integer  "purchase_id",        limit: 4
+    t.integer  "product_id",         limit: 4
+    t.integer  "number_of_products", limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "purchase_informations", ["purchase_id", "product_id"], name: "index_purchase_informations_on_purchase_id_and_product_id", unique: true, using: :btree
+
+  create_table "purchases", force: :cascade do |t|
+    t.integer  "user_id",       limit: 4
+    t.integer  "store_id",      limit: 4
+    t.integer  "total_amounts", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "shoppings", force: :cascade do |t|
+    t.integer  "user_id",            limit: 4
+    t.integer  "product_id",         limit: 4
+    t.integer  "purchase_id",        limit: 4
+    t.integer  "number_of_products", limit: 4
+    t.string   "action",             limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  create_table "stores", force: :cascade do |t|
+    t.string   "name",                   limit: 255
+    t.string   "account_id",             limit: 255
+    t.string   "branch_number",          limit: 255
+    t.string   "account_type_cd",        limit: 255
+    t.string   "account_type",           limit: 255
+    t.string   "account_number",         limit: 255
+    t.string   "account_holder_type_cd", limit: 255
+    t.string   "account_holder_type",    limit: 255
+    t.integer  "balance",                limit: 4
+    t.date     "opening_date"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "user_id",                limit: 255
+    t.string   "name",                   limit: 255
+    t.string   "post_code",              limit: 255
+    t.string   "phone_number",           limit: 255
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
