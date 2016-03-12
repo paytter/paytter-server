@@ -56,9 +56,9 @@ namespace :deploy do
 
   task :restart, :clear_cache do
     on roles :all do
-      execute "cd #{current_path} && (RAILS_ENV=#{fetch(:rails_env)} #{fetch(:rbenv_prefix)} bundle exec rake unicorn:restart)"
-      # execute "cd #{current_path} && (RAILS_ENV=#{fetch(:rails_env)} #{fetch(:rbenv_prefix)} bundle exec rake unicorn:stop)"
-      # execute "cd #{current_path} && (RAILS_ENV=#{fetch(:rails_env)} #{fetch(:rbenv_prefix)} bundle exec rake unicorn:start)"
+      # execute "cd #{current_path} && (RAILS_ENV=#{fetch(:rails_env)} #{fetch(:rbenv_prefix)} bundle exec rake unicorn:restart)"
+      execute "cd #{current_path} && (RAILS_ENV=#{fetch(:rails_env)} #{fetch(:rbenv_prefix)} bundle exec rake unicorn:stop)"
+      execute "cd #{current_path} && (RAILS_ENV=#{fetch(:rails_env)} #{fetch(:rbenv_prefix)} bundle exec rake unicorn:start)"
     end
   end
 end
