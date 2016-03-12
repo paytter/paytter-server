@@ -19,3 +19,10 @@ p 'products created.'
 Food.create(make_dummy_data(CSV.read('db/seed_data/foods.csv')))
 p 'foods created.'
 
+# stores
+Store.create(make_dummy_data(CSV.read('db/seed_data/stores.csv')))
+p 'stores created.'
+
+# product_stores
+ProductStore.create(make_dummy_data(CSV.read('db/seed_data/product_stores.csv')))
+p 'product_stores created.'

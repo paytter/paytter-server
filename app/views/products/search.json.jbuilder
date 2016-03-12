@@ -1,4 +1,4 @@
-json.extract! @product, :price
+json.price @price
 json.candidates do |candidate|
   json.category @product_type
   json.detail @product.send(@product_type), partial: "#{@product_type}s/#{@product_type}", as: @product_type.to_sym
