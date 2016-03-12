@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: paytter-server_production
-  username: paytter-server
-  password: <%= ENV['PAYTTER-SERVER_DATABASE_PASSWORD'] %>
+  username: <%= ENV['db_user'] %>
+  password: <%= ENV['db_pass'] %>
