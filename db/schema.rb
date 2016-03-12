@@ -86,14 +86,19 @@ ActiveRecord::Schema.define(version: 20160312152328) do
   add_index "product_stores", ["store_id", "product_id"], name: "index_product_stores_on_store_id_and_product_id", unique: true, using: :btree
 
   create_table "products", force: :cascade do |t|
-    t.string   "name",       limit: 255, null: false
-    t.integer  "price",      limit: 4
-    t.string   "item_id",    limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name",           limit: 255, null: false
+    t.integer  "price",          limit: 4
+    t.string   "itemId",         limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.float    "score",          limit: 24
+    t.string   "imageUrl",       limit: 255
+    t.string   "sites_url",      limit: 255
+    t.string   "sites_title",    limit: 255
+    t.string   "sites_imageUrl", limit: 255
   end
 
-  add_index "products", ["item_id"], name: "index_products_on_item_id", unique: true, using: :btree
+  add_index "products", ["itemId"], name: "index_products_on_itemId", unique: true, using: :btree
 
   create_table "purchase_informations", force: :cascade do |t|
     t.integer  "purchase_id",        limit: 4
