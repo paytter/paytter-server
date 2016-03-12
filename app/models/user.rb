@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
       self.transaction do
         # TODO: 変更する
         user.password = 'password'
-        params.slice(:my_accounts).map do |attrs|
+        params[:my_accounts].each do |attrs|
           user.bank_accounts.build(attrs)
         end
 

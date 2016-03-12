@@ -16,7 +16,9 @@ class UsersController < ApplicationController
   def create_params
     params.require(:user).permit(
       :user_id, :user_name, :post_code, :address, :phone_number, :email, :image,
-      my_accounts: []
+      my_accounts: [:account_id, :branch_number, :account_type_cd, :account_type,
+                    :account_number, :account_holder_type_cd, :account_holder_type,
+                    :balance, :opening_date]
     )
   end
 end
