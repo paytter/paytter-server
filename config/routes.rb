@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: :create
+  resources :shoppings, only: :create
 end
