@@ -5,9 +5,9 @@ class UsersController < ApplicationController
   def create
     @user = User.save_with_bank_accounts(create_params)
     if @user.errors.blank?
-      render json: { access_token: @user.access_token }.to_json
+      render json: { access_token: @user.access_token }, status: :created
     else
-      render json: { errors: @user.errors.full_messages }
+      render json: { errors: @user.errors.full_messages }, status: :bad_request
     end
   end
 
