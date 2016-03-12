@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312200720) do
+ActiveRecord::Schema.define(version: 20160312231410) do
 
   create_table "bank_accounts", force: :cascade do |t|
     t.integer  "user_id",                limit: 4
@@ -27,8 +27,6 @@ ActiveRecord::Schema.define(version: 20160312200720) do
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
   end
-
-  add_index "bank_accounts", ["user_id"], name: "index_bank_accounts_on_user_id", unique: true, using: :btree
 
   create_table "books", force: :cascade do |t|
     t.integer  "product_id",     limit: 4
