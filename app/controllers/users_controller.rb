@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
 
-  skip_before_action :authorized_access_token!
-  before_action :set_store
+  skip_before_action :authorized_access_token!, only: :index
+
+  before_action :set_store, only: :index
   before_action :authenticate_client!, only: :index
 
   def index
-    @users = @store.users
+    @today_store = @store.today
   end
 
   def create
