@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   resources :stores, only: :show do
     resources :users, only: :index
   end
+
+  resources :visits, only: :create
 end
