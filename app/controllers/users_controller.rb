@@ -17,6 +17,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def upload
+    user = User.find 1
+    user.image = params[:image]
+
+    user.save!
+
+    render json: { user_name: user.user_name, image_url: user.image.url }
+  end
+
   private
 
   def create_params
