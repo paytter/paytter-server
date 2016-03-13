@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: :create do
-    patch 'upload', on: :collection
+    post 'upload', on: :collection
   end
   resources :shoppings, only: :create
   resources :purchases, only: :create
