@@ -24,6 +24,8 @@ source 'https://rails-assets.org' do
 end
 gem 'font-awesome-rails'
 
+gem 'carrierwave'
+
 group :development, :test do
   gem 'byebug'
   gem 'better_errors'
