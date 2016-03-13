@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
+  mount_uploader :image, ImageUploader
+
   def self.save_with_bank_accounts(params)
     user = self.new(params.except(:my_accounts))
     begin

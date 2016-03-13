@@ -26,6 +26,8 @@ gem 'font-awesome-rails'
 
 gem 'carrierwave'
 
+gem 'carrierwave'
+
 group :development, :test do
   gem 'byebug'
   gem 'better_errors'
