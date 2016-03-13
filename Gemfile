@@ -18,6 +18,8 @@ gem 'activerecord-import'
 gem 'unicorn'
 gem 'devise'
 
+gem 'carrierwave'
+
 group :development, :test do
   gem 'byebug'
   gem 'better_errors'
