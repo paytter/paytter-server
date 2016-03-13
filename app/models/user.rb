@@ -9,11 +9,12 @@ class User < ActiveRecord::Base
   has_many :bank_accounts
   has_many :shoppings
 
+  mount_uploader :image, ImageUploader
+
   def self.save_with_bank_accounts(params)
     user = self.new(params.except(:my_accounts))
     begin
       self.transaction do
-        # TODO: 変更する
         user.password = 'password'
         params[:my_accounts].each do |attrs|
           user.bank_accounts.build(attrs)

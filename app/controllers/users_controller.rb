@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  skip_before_action :authorized_access_token!
+  skip_before_action :authorized_access_token!, except: :upload
 
   def create
     @user = User.save_with_bank_accounts(create_params)
@@ -9,6 +9,14 @@ class UsersController < ApplicationController
     else
       render json: { errors: @user.errors.full_messages }, status: :bad_request
     end
+  end
+
+  def upload
+    access_user.image = params[:image]
+
+    access_user.save!
+
+    render json: { user_name: access_user.user_name, image_url: access_user.image.url }
   end
 
   private
