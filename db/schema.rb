@@ -192,6 +192,7 @@ ActiveRecord::Schema.define(version: 20160313005802) do
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.string   "access_token",           limit: 255
+    t.string   "image",                  limit: 255
   end
 
   add_index "users", ["access_token"], name: "index_users_on_access_token", unique: true, using: :btree
