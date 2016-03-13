@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  skip_before_action :authorized_access_token!
+
   before_action :check_params
 
   def search
