@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312231410) do
+ActiveRecord::Schema.define(version: 20160313001714) do
 
   create_table "bank_accounts", force: :cascade do |t|
     t.integer  "user_id",                limit: 4
@@ -49,6 +49,33 @@ ActiveRecord::Schema.define(version: 20160312231410) do
   add_index "books", ["isbn10"], name: "index_books_on_isbn10", unique: true, using: :btree
   add_index "books", ["isbn13"], name: "index_books_on_isbn13", unique: true, using: :btree
   add_index "books", ["product_id"], name: "index_books_on_product_id", unique: true, using: :btree
+
+  create_table "client_stores", force: :cascade do |t|
+    t.integer  "client_id",  limit: 4
+    t.integer  "store_id",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string   "name",                   limit: 255
+    t.string   "role",                   limit: 255
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+  end
+
+  add_index "clients", ["email"], name: "index_clients_on_email", unique: true, using: :btree
+  add_index "clients", ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true, using: :btree
 
   create_table "foods", force: :cascade do |t|
     t.integer  "product_id",     limit: 4
