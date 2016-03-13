@@ -23,3 +23,6 @@
 
 # Ignore test
 /test/**
+
+# public images
+public/uploads/
