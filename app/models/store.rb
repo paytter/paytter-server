@@ -6,4 +6,6 @@ class Store < ActiveRecord::Base
 
   has_many :client_stores
   has_many :clients, through: :client_stores
+  has_many :visits
+  has_many :users, through: :visits
 end

@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   has_many :bank_accounts
   has_many :shoppings
+  has_many :visits
+  has_many :stores, through: :visits
 
   def self.save_with_bank_accounts(params)
     user = self.new(params.except(:my_accounts))
