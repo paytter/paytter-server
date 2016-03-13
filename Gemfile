@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'figaro'
+gem 'html2slim'
 gem 'slim-rails'
 gem 'activerecord-import'
 gem 'unicorn'
