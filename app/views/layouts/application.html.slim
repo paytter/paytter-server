@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title
+      | PaytterServer
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    nav.navbar.navbar-dark.bg-inverse.navbar-fixed-top
+      .container
+        = link_to 'Paytter Admin', '#', class: 'navbar-brand'
+        = render 'layouts/header'
+
+    .container
+        p.notice= notice
+        p.alert= alert
+        = yield

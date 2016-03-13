@@ -18,6 +18,11 @@ gem 'slim-rails'
 gem 'activerecord-import'
 gem 'unicorn'
 gem 'devise'
+gem 'bootstrap'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'byebug'

@@ -1,4 +1,4 @@
-class Clients::SessionsController < Devise::SessionsController
+class Clients::SessionsController < Clients::BaseController
 # before_filter :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

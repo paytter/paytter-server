@@ -1,4 +1,4 @@
-class Clients::ConfirmationsController < Devise::ConfirmationsController
+class Clients::ConfirmationsController < Clients::BaseController
   # GET /resource/confirmation/new
   # def new
   #   super
