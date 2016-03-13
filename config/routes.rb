@@ -11,4 +11,8 @@ Rails.application.routes.draw do
   resources :users, only: :create
   resources :shoppings, only: :create
   resources :purchases, only: :create
+
+  resources :stores, only: :show do
+    resources :users, only: :index
+  end
 end

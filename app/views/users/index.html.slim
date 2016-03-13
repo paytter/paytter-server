@@ -1,0 +1,9 @@
+.table
+  .thead
+    tr
+      th= 'ご来店されているお客様'
+  - @user.present?
+    .tbody
+      = @users.each do |user|
+        tr
+          td= user.image.url
