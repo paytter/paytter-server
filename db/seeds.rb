@@ -26,3 +26,19 @@ p 'stores created.'
 # product_stores
 ProductStore.create(make_dummy_data(CSV.read('db/seed_data/product_stores.csv')))
 p 'product_stores created.'
+
+# users
+users = User.create(make_dummy_data(CSV.read('db/seed_data/users.csv')))
+p 'users created.'
+
+# users access_token
+users.each do |user|
+  user.password = 'password'
+  user.access_token = SecureRandom.urlsafe_base64(24).tr('lIO0', 'sxyz')
+  user.save!
+end
+p "user's access_token generated."
+
+# bank_accounts
+BankAccount.create(make_dummy_data(CSV.read('db/seed_data/bank_accounts.csv')))
+p 'bank_accounts created.'
